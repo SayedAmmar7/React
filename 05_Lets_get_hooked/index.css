@@ -1,0 +1,67 @@
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    
+    background-color: rgb(227, 251, 253);
+    box-shadow: -1px 4px 20px 14px rgba(250, 206, 118, 0.2);
+
+}
+body{
+    background-color: rgb(240, 255, 175);
+}
+
+.nav-items>ul{
+list-style: none;
+display: flex;
+
+}
+.nav-items >ul >li {
+    padding: 10px;
+    cursor: pointer;
+}
+.logo{
+    width: 100px;
+}
+
+.card{
+    width: 250px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: white;
+    
+}
+.card> h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: 35px;
+}
+.card> img {
+    width: 100%;
+   
+}
+.restraunt-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    cursor: pointer;
+    
+    
+}
+.footer{
+   
+    padding: 20px 0px;
+    text-align: center;
+    
+    background-color: rgb(227, 251, 253);
+
+}
+.rating{
+    background-color: rgb(254, 227, 176);
+    margin-right: 150px;
+    padding: 0 10px;
+    text-align: center;
+}
