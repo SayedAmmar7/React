@@ -26,6 +26,7 @@ class Profile extends React.Component {
     return (
       <div className="">
         <h1>Profile Class Component</h1>
+        <img src={this.state.userInfo.avatar_url} alt="" />
         <h2>Full Name: {this.state.userInfo.name}</h2>
         <h2>login: {this.state.userInfo.login}</h2>
         <h2>Name: {this.props.name}</h2>
@@ -34,8 +35,6 @@ class Profile extends React.Component {
         <h2>Count3 : {this.state.count3}</h2>
         <button
           onClick={() => {
-            // WE DO NOT CHANGE STATE DIRECTLY
-            // NEVER DO this.state = something
             this.setState({
               count3: 10,
               count2: 99,
@@ -50,3 +49,5 @@ class Profile extends React.Component {
 }
 
 export default Profile;
+// WE DO NOT CHANGE STATE DIRECTLY
+// NEVER DO this.state = something

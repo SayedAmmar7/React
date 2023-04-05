@@ -34901,57 +34901,88 @@ var _profileClass = require("./ProfileClass");
 var _profileClassDefault = parcelHelpers.interopDefault(_profileClass);
 var _profile = require("./Profile");
 var _profileDefault = parcelHelpers.interopDefault(_profile);
-const About = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                children: "About Us Page"
-            }, void 0, false, {
-                fileName: "src/component/About.js",
-                lineNumber: 6,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: "FoodVilla was created by xyz with the help of React. "
-            }, void 0, false, {
-                fileName: "src/component/About.js",
-                lineNumber: 7,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileClassDefault.default), {
-                name: "XYZ"
-            }, void 0, false, {
-                fileName: "src/component/About.js",
-                lineNumber: 8,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileDefault.default), {
-                name: "XYZ"
-            }, void 0, false, {
-                fileName: "src/component/About.js",
-                lineNumber: 9,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/component/About.js",
-        lineNumber: 5,
-        columnNumber: 5
-    }, undefined);
+var _react = require("react");
+/* const About = () => {
+  return (
+    <div className="">
+      <h1>About Us Page</h1>
+      <p>FoodVilla was created by xyz with the help of React. </p>
+      <ProfileClass name={"XYZ"} />
+      <ProfileFunc name={"XYZ"} />
+    </div>
+  );
 };
-_c = About;
 // you can also use <Outlet /> instead of  <Profile />
-exports.default = About;
-var _c;
-$RefreshReg$(_c, "About");
+export default About; */ // EITHER class About extends React.Component{} OR
+class About extends (0, _react.Component) {
+    constructor(props){
+        super(props);
+    }
+    // componentDidMount and useEffect are alternative
+    // you can make componentDidMount async but you cannot make useEffect function async => why?
+    // FIRST OF ALL constructor will be called then
+    // render() will be called
+    // componentDidMount will be called then
+    render() {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                    children: "About Us Page"
+                }, void 0, false, {
+                    fileName: "src/component/About.js",
+                    lineNumber: 33,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    children: "FoodVilla was created by xyz with the help of React. "
+                }, void 0, false, {
+                    fileName: "src/component/About.js",
+                    lineNumber: 34,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileClassDefault.default), {
+                    name: "XYZ"
+                }, void 0, false, {
+                    fileName: "src/component/About.js",
+                    lineNumber: 35,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileDefault.default), {
+                    name: "XYZ"
+                }, void 0, false, {
+                    fileName: "src/component/About.js",
+                    lineNumber: 36,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/component/About.js",
+            lineNumber: 32,
+            columnNumber: 7
+        }, this);
+    }
+}
+exports.default = About; /*
+ * Parent Constructor
+ * Parent Render
+ *  First Child Constructor
+ *  First Child Render
+ *  Second Child Constructor
+ *  Second Child Render
+ *
+ *  DOM UPDATED fir children
+ *
+ *  First Child - componentDidMount
+ *  Second Child -componentDidMount
+ * Parent - componentDidMount
+ */ 
 
   $parcel$ReactRefreshHelpers$77f7.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./ProfileClass":"bMaBv","./Profile":"7kLfj"}],"bMaBv":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","./ProfileClass":"bMaBv","./Profile":"7kLfj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bMaBv":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8d39 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -34970,13 +35001,20 @@ class Profile extends (0, _reactDefault.default).Component {
         this.state = {
             count: 100,
             count2: 200,
-            count3: 300
+            count3: 300,
+            userInfo: {
+                name: "Dummy Name",
+                login: "Dummy login"
+            }
         };
     // OR const {count} = this.state
     }
-    componentDidMount() {
-        //API call
-        console.log("componentDidMount");
+    async componentDidMount() {
+        const data = await fetch("https://api.github.com/users/sayedammar7");
+        const json = await data.json();
+        this.setState({
+            userInfo: json
+        });
     }
     render() {
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34986,10 +35024,37 @@ class Profile extends (0, _reactDefault.default).Component {
                     children: "Profile Class Component"
                 }, void 0, false, {
                     fileName: "src/component/ProfileClass.js",
-                    lineNumber: 20,
+                    lineNumber: 28,
                     columnNumber: 9
                 }, this),
-                ";",
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    src: this.state.userInfo.avatar_url,
+                    alt: ""
+                }, void 0, false, {
+                    fileName: "src/component/ProfileClass.js",
+                    lineNumber: 29,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                    children: [
+                        "Full Name: ",
+                        this.state.userInfo.name
+                    ]
+                }, void 0, true, {
+                    fileName: "src/component/ProfileClass.js",
+                    lineNumber: 30,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                    children: [
+                        "login: ",
+                        this.state.userInfo.login
+                    ]
+                }, void 0, true, {
+                    fileName: "src/component/ProfileClass.js",
+                    lineNumber: 31,
+                    columnNumber: 9
+                }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: [
                         "Name: ",
@@ -34997,8 +35062,8 @@ class Profile extends (0, _reactDefault.default).Component {
                     ]
                 }, void 0, true, {
                     fileName: "src/component/ProfileClass.js",
-                    lineNumber: 20,
-                    columnNumber: 42
+                    lineNumber: 32,
+                    columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: [
@@ -35007,7 +35072,7 @@ class Profile extends (0, _reactDefault.default).Component {
                     ]
                 }, void 0, true, {
                     fileName: "src/component/ProfileClass.js",
-                    lineNumber: 21,
+                    lineNumber: 33,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -35017,7 +35082,7 @@ class Profile extends (0, _reactDefault.default).Component {
                     ]
                 }, void 0, true, {
                     fileName: "src/component/ProfileClass.js",
-                    lineNumber: 22,
+                    lineNumber: 34,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -35027,13 +35092,11 @@ class Profile extends (0, _reactDefault.default).Component {
                     ]
                 }, void 0, true, {
                     fileName: "src/component/ProfileClass.js",
-                    lineNumber: 23,
+                    lineNumber: 35,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     onClick: ()=>{
-                        // WE DO NOT CHANGE STATE DIRECTLY
-                        // NEVER DO this.state = something
                         this.setState({
                             count3: 10,
                             count2: 99
@@ -35042,18 +35105,19 @@ class Profile extends (0, _reactDefault.default).Component {
                     children: "Count3"
                 }, void 0, false, {
                     fileName: "src/component/ProfileClass.js",
-                    lineNumber: 24,
+                    lineNumber: 36,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/component/ProfileClass.js",
-            lineNumber: 19,
+            lineNumber: 27,
             columnNumber: 7
         }, this);
     }
 }
-exports.default = Profile;
+exports.default = Profile; // WE DO NOT CHANGE STATE DIRECTLY
+ // NEVER DO this.state = something
 
   $parcel$ReactRefreshHelpers$8d39.postlude(module);
 } finally {

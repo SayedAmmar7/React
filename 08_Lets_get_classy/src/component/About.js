@@ -29,7 +29,7 @@ class About extends Component {
 
   render() {
     return (
-      <div className="">
+      <div>
         <h1>About Us Page</h1>
         <p>FoodVilla was created by xyz with the help of React. </p>
         <ProfileClass name={"XYZ"} />
@@ -38,6 +38,8 @@ class About extends Component {
     );
   }
 }
+
+export default About;
 
 /*
  * Parent Constructor
